@@ -1,0 +1,15 @@
+/* styles.css */
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 15px;
+}
+
+.nav-link {
+    color: #fff;
+}
+
+/* Add your custom responsive styles here */

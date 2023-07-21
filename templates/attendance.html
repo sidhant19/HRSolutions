@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Mark Attendance{% endblock %}
+
+{% block content %}
+    <h1>Mark Attendance</h1>
+    <div class="instruction">Instructions:</div>
+    <div class="instruction">1. Click on the button with a mobile device.</div>
+    <div class="instruction">2. Turn on location.</div>
+
+    <p id="location"></p>
+    <form id="attendanceForm" method="post">
+        <input type="hidden" id="latitude" name="latitude" value="">
+        <input type="hidden" id="longitude" name="longitude" value="">
+        <button id="btnMarkAttendance" class="btn btn-primary">Mark Attendance</button>
+    </form>
+
+<!--    <script>-->
+<!--         document.addEventListener('DOMContentLoaded', () => {-->
+<!--            if ("geolocation" in navigator) {-->
+<!--                navigator.geolocation.getCurrentPosition(-->
+<!--                    showPosition,-->
+<!--                    showError,-->
+<!--                    { enableHighAccuracy: true }-->
+<!--                );-->
+<!--            } else {-->
+<!--                alert("Geolocation is not supported by this browser.");-->
+<!--            }-->
+<!--        });-->
+<!--        document.getElementById('btnMarkAttendance').addEventListener('click', function() {-->
+<!--            // Check if geolocation is supported-->
+<!--            if ("geolocation" in navigator) {-->
+<!--                navigator.geolocation.getCurrentPosition(function(position) {-->
+<!--                    var latitude = position.coords.latitude;-->
+<!--                    var longitude = position.coords.longitude;-->
+
+<!--                    // Set the latitude and longitude values in the form-->
+<!--                    document.getElementById('latitude').value = latitude;-->
+<!--                    document.getElementById('longitude').value = longitude;-->
+
+<!--                    // Show the location information to the user-->
+<!--                    var locationElement = document.getElementById('location');-->
+<!--                    locationElement.textContent = 'Latitude: ' + latitude + ', Longitude: ' + longitude;-->
+
+<!--                    // Submit the form to the server-->
+<!--                    document.getElementById('attendanceForm').submit();-->
+<!--                }, function(error) {-->
+<!--                    console.log('Error getting location:', error);-->
+<!--                    alert('Failed to get location. Please try again.');-->
+<!--                });-->
+<!--            } else {-->
+<!--                alert("Geolocation is not supported by this browser.");-->
+<!--            }-->
+<!--        });-->
+
+<!--    </script>-->
+{% endblock %}
