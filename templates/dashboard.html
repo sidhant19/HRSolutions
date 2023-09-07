@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h5 class="card-title">Attendance</h5>
+                    <p class="card-text">Click to mark your attendance.</p>
+                    <a href="{{ url_for('attendance') }}" class="btn btn-primary">Go to Attendance</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-file-alt"></i>
+                    <h5 class="card-title">Requests</h5>
+                    <p class="card-text">Approve  and check status of pending requests and .</p>
+                    <a href="{{ url_for('requests') }}" class="btn btn-primary">Go to Requests</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-envelope"></i>
+                    <h5 class="card-title">Messages</h5>
+                    <p class="card-text">Chat With Your Colleague</p>
+                    <a href="{{ url_for('messages') }}" class="btn btn-primary">Messages</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-bullhorn"></i>
+                    <h5 class="card-title">Notice Board</h5>
+                    <p class="card-text">Check Company Notice Board</p>
+                    <a href="{{ url_for('requests') }}" class="btn btn-primary">Check Notice Board</a>
+                </div>
+            </div>
+        </div>
+
+         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-money-bill-alt"></i>
+                     <h5 class="card-title">Reimbursement</h5>
+                    <p class="card-text">Submit your reimbursement requests here.</p>
+                    <a href="#" class="btn btn-primary">Submit Reimbursement</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-users"></i>
+                    <h5 class="card-title">User Management</h5>
+                    <p class="card-text">
+                    Manage your organization's users here. Add, update, or delete user accounts as needed.
+                    Monitor user activity and access control to ensure a secure environment.
+                </p>
+                <a href="user_management" class="btn btn-primary">Manage Users</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h5 class="card-title">Payroll Management</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-folder-open"></i>
+                    <h5 class="card-title">Employee Files</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-chart-line"></i>
+                    <h5 class="card-title">Performance Management</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h5 class="card-title">Training and Development</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-clock"></i>
+                    <h5 class="card-title">Time and Attendance</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-poll"></i>
+                    <h5 class="card-title">Employee Surveys and Feedback</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-file-contract"></i>
+                    <h5 class="card-title">Compliance and Policies</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-gift"></i>
+                    <h5 class="card-title">Benefits and Insurance</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-chart-bar"></i>
+                    <h5 class="card-title">Reports and Analytics</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

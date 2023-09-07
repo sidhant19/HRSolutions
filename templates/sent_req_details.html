@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Requests Details</h2>
+            {% if request.request_tag == 'add_employee' %}
+            <h3>Employee Details</h3>
+            <table class="table table-bordered table-striped">
+                <tbody id="sent-employee-details">
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ datas[request.id].name }}</td>
+                    </tr><tr>
+                        <th>Email</th>
+                        <td>{{ datas[request.id].email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>{{ datas[request.id].phone }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date Of Birth</th>
+                        <td>{{ datas[request.id].dob }}</td>
+                    </tr>
+                    <tr>
+                        <th>Level</th>
+                        <td>{{ datas[request.id].level }}</td>
+                    </tr>
+                    <tr>
+                        <th>Designation</th>
+                        <td>{{ datas[request.id].designation }}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>{{ datas[request.id].address }}</td>
+                    </tr>
+                    <tr>
+                        <th>Basic Salary</th>
+                        <td>{{ datas[request.id].basic_salary }}</td>
+                    </tr>
+                    <tr>
+                        <th>DA</th>
+                        <td>{{ datas[request.id].dearance_allowance }}</td>
+                    </tr>
+                    <tr>
+                        <th>HRA</th>
+                        <td>{{ datas[request.id].house_rent_allowance }}</td>
+                    </tr>
+                    <tr>
+                        <th>Conveyance Allowance</th>
+                        <td>{{ datas[request.id].conveyance_allowance }}</td>
+                    </tr>
+                    <tr>
+                        <th>Manager</th>
+                        <td>{{ User.query.filter_by(id=datas[request.id].manager).first().name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Address Proof</th>
+                        <td><a href="{{ url_for('static', filename=datas[request.id].address_proof) }}">Download</a></td>
+                    </tr>
+                    <tr>
+                        <th>Identity Proof</th>
+                        <td><a href="{{ url_for('static', filename=datas[request.id].identity_proof) }}">Download</a></td>
+                    </tr>
+                    <tr>
+                        <th>Other Documents</th>
+                        <td><a href="{{ url_for('static', filename=datas[request.id].other_documents) }}">Download</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

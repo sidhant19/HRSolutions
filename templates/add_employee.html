@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Add Employee</h2>
+  <form method="POST" enctype="multipart/form-data">
+    <!-- User Information -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="tel" class="form-control" id="phone" name="phone" required>
+    </div>
+     <div class="form-group">
+      <label for="dob">Date of Birth:</label>
+      <input type="date" class="form-control" id="dob" name="dob" required>
+    </div>
+    <div class="form-group">
+      <label for="level">Level</label>
+      <input type="number" class="form-control" id="level" name="level" value="{{ current_user.level + 1 }}" readonly>
+    </div>
+    <div class="form-group">
+      <label for="designation">Designation</label>
+      <input type="text" class="form-control" id="designation" name="designation" required>
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="addressProof">Address Proof (Upload File, PDF Only!)</label>
+      <input type="file" class="form-control-file" id="addressProof" name="addressProof" accept=".pdf" required>
+    </div>
+    <div class="form-group">
+      <label for="identityProof">Identity Proof (Upload File PDF Only!)</label>
+      <input type="file" class="form-control-file" id="identityProof" name="identityProof" accept=".pdf" required>
+    </div>
+    <div class="form-group">
+      <label for="otherDocuments">Other Documents (Upload Files PDF Only!)</label>
+      <input type="file" class="form-control-file" id="otherDocuments" name="otherDocuments" accept=".pdf" multiple>
+    </div>
+
+    <!-- Salary -->
+    <h3 class="mt-4">Salary</h3>
+    <div class="form-group">
+      <label for="basicSalary">Basic Salary</label>
+      <input type="number" class="form-control" id="basicSalary" name="basicSalary" required>
+    </div>
+    <div class="form-group">
+      <label for="dearanceAllowance">Dearance Allowance</label>
+      <input type="number" class="form-control" id="dearanceAllowance" name="dearanceAllowance" required>
+    </div>
+    <div class="form-group">
+      <label for="houseRentAllowance">House Rent Allowance</label>
+      <input type="number" class="form-control" id="houseRentAllowance" name="houseRentAllowance" required>
+    </div>
+    <div class="form-group">
+      <label for="conveyanceAllowance">Conveyance Allowance</label>
+      <input type="number" class="form-control" id="conveyanceAllowance" name="conveyanceAllowance" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock %}

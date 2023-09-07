@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Requests Sent</h2>
+
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Receiver</th>
+                        <th>Request Tag</th>
+                        <th>Details</th>
+                        <th>Status</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody id="sent-requests-body">
+                    <!-- Loop through requests where current user is the sender -->
+                    {% for request in sent_request %}
+                    {% if request.approval == None %}
+                    <tr>
+                        <td>{{ request.id }}</td>
+                        <td>{{ User.query.filter_by(id=request.receiver).first().name }}</td>
+                        <td>{{ request.request_tag }}</td>
+                        <td>
+                             <a href="{{ url_for('sent_req_details', req=request.id) }}" class="btn btn-info">View Details</a>
+                        </td>
+                        {% if request.approval == None %}
+                        <td>Pending</td>
+                        {% elif request.approval == True %}
+                        <td>Approved</td>
+                        {% else %}
+                        <td>Rejected</td>
+                        {% endif %}
+                        <td>{{ request.comments }}</td>
+                    </tr>
+                    {% elif request.approval == False %}
+                    <tr style= "background-color: #f2dede;">
+                        <td>{{ request.id }}</td>
+                        <td>{{ User.query.filter_by(id=request.receiver).first().name }}</td>
+                        <td>{{ request.request_tag }}</td>
+                        <td>
+                             <a href="{{ url_for('sent_req_details', req=request.id) }}" class="btn btn-info">View Details</a>
+                        </td>
+                        {% if request.approval == None %}
+                        <td>Pending</td>
+                        {% elif request.approval == True %}
+                        <td>Approved</td>
+                        {% else %}
+                        <td>Rejected</td>
+                        {% endif %}
+                        <td>{{ request.comments }}</td>
+                    </tr>
+                    {% else %}
+                    <tr style= "background-color: #DEF2DE;">
+                        <td>{{ request.id }}</td>
+                        <td>{{ User.query.filter_by(id=request.receiver).first().name }}</td>
+                        <td>{{ request.request_tag }}</td>
+                        <td>
+                             <a href="{{ url_for('sent_req_details', req=request.id) }}" class="btn btn-info">View Details</a>
+                        </td>
+                        {% if request.approval == None %}
+                        <td>Pending</td>
+                        {% elif request.approval == True %}
+                        <td>Approved</td>
+                        {% else %}
+                        <td>Rejected</td>
+                        {% endif %}
+                        <td>{{ request.comments }}</td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-8">
+            <h2>Requests Received</h2>
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Sender</th>
+                        <th>Request Tag</th>
+                        <th>Details</th>
+                        <th>Status</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody id="received-requests-body">
+                    <!-- Loop through requests where current user is the receiver -->
+                    {% for request in received_requests %}
+                    {% if request.approval == None %}
+                    <tr>
+                        <td>{{ request.id }}</td>
+                        <td>{{ User.query.filter_by(id=request.sender).first().name }}</td>
+                        <td>{{ request.request_tag }}</td>
+                        <td>
+                           <a href="{{ url_for('received_req_details', req=request.id) }}" class="btn btn-info">View Details</a>
+                        </td>
+                        {% if request.approval == None %}
+                        <td>Pending</td>
+                        {% elif request.approval == True %}
+                        <td>Approved</td>
+                        {% else %}
+                        <td>Rejected</td>
+                        {% endif %}
+                        <td>{{ request.comments }}</td>
+                    </tr>
+                    {% elif request.approval == False %}
+                    <tr style="background-color: #f2dede">
+                        <td>{{ request.id }}</td>
+                        <td>{{ User.query.filter_by(id=request.sender).first().name }}</td>
+                        <td>{{ request.request_tag }}</td>
+                        <td>
+                           <a href="{{ url_for('received_req_details', req=request.id) }}" class="btn btn-info">View Details</a>
+                        </td>
+                        {% if request.approval == None %}
+                        <td>Pending</td>
+                        {% elif request.approval == True %}
+                        <td>Approved</td>
+                        {% else %}
+                        <td>Rejected</td>
+                        {% endif %}
+                        <td>{{ request.comments }}</td>
+                    </tr>
+                    {% else %}
+                    <tr style="background-color: #def2de">
+                        <td>{{ request.id }}</td>
+                        <td>{{ User.query.filter_by(id=request.sender).first().name }}</td>
+                        <td>{{ request.request_tag }}</td>
+                        <td>
+                           <a href="{{ url_for('received_req_details', req=request.id) }}" class="btn btn-info">View Details</a>
+                        </td>
+                        {% if request.approval == None %}
+                        <td>Pending</td>
+                        {% elif request.approval == True %}
+                        <td>Approved</td>
+                        {% else %}
+                        <td>Rejected</td>
+                        {% endif %}
+                        <td>{{ request.comments }}</td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to filter requests by request ID, sender, or tag for "Requests Sent"
+    $("#sent-search").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#sent-requests-body tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+    // Function to filter requests by request ID, receiver, or tag for "Requests Received"
+    $("#received-search").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#received-requests-body tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+    // Function to approve a request (replace this with your actual approval logic)
+    function approveRequest(requestId) {
+        // Add your approval logic here
+        alert("Request " + requestId + " has been approved!");
+    }
+
+</script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                Users
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for user in users %}
+                    <a href="{{ url_for('messages', receiver_id=user.id) }}" class="list-group-item list-group-item-action">
+                        {{ user.username }} - {{ user.designation }}
+                    </a>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header">
+                Messages
+            </div>
+            <div class="card-body" id="message-box">
+                {% if messages %}
+                <ul class="list-group">
+                    {% for msg in messages %}
+                    <li class="list-group-item">{{ msg.sender }}: {{ msg.msg }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="card-footer">
+                <form action="{{ url_for('messages', receiver_id=receiver_id) }}" method="post">
+                    <div class="input-group">
+                        <input type="text" name="message" class="form-control" placeholder="Enter your message...">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
